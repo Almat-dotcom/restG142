@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tyresg142
+    username: postgres
+    password: qwerty
+  application:
+    name: restG142

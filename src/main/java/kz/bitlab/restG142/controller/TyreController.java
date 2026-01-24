@@ -1,5 +1,8 @@
 package kz.bitlab.restG142.controller;
 
+import kz.bitlab.restG142.dto.TyreRequestDTO;
+import kz.bitlab.restG142.dto.TyreResponseDTO;
+import kz.bitlab.restG142.dto.TyreResponseShortDTO;
 import kz.bitlab.restG142.model.Tyres;
 import kz.bitlab.restG142.service.TyreService;
 import lombok.RequiredArgsConstructor;
@@ -16,18 +19,23 @@ public class TyreController {
     private final TyreService tyreService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Tyres> get(@PathVariable(name = "id") Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(tyreService.getById(id));
+    public ResponseEntity<TyreResponseShortDTO> get(@PathVariable(name = "id") Long id) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(tyreService.getById(id));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<Tyres>> getAll() {
+    public ResponseEntity<List<TyreResponseShortDTO>> getAll() {
         return ResponseEntity.status(HttpStatus.OK).body(tyreService.getAll());
     }
 
     @PostMapping("/")
-    public ResponseEntity<Tyres> add(@RequestBody Tyres tyre) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(tyreService.add(tyre));
+    public ResponseEntity<TyreResponseDTO> add(@RequestBody TyreRequestDTO dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(tyreService.add(dto));
     }
 
     @DeleteMapping("/{id}")
@@ -36,7 +44,8 @@ public class TyreController {
     }
 
     @PutMapping("/")
-    public ResponseEntity<Tyres> update(@RequestBody Tyres tyre) {
-        return ResponseEntity.status(HttpStatus.OK).body(tyreService.update(tyre));
+    public ResponseEntity<TyreResponseDTO> update(@RequestBody TyreRequestDTO dto,
+                                        @RequestParam(name = "id") Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(tyreService.update(dto, id));
     }
 }

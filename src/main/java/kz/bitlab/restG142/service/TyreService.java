@@ -1,13 +1,16 @@
 package kz.bitlab.restG142.service;
 
+import kz.bitlab.restG142.dto.TyreRequestDTO;
+import kz.bitlab.restG142.dto.TyreResponseDTO;
+import kz.bitlab.restG142.dto.TyreResponseShortDTO;
 import kz.bitlab.restG142.model.Tyres;
 
 import java.util.List;
 
 public interface TyreService {
-    Tyres getById(Long id);
-    List<Tyres> getAll();
-    Tyres add(Tyres tyre);
+    TyreResponseShortDTO getById(Long id);
+    List<TyreResponseShortDTO> getAll();
+    TyreResponseDTO add(TyreRequestDTO dto);
     Void delete(Long id);
-    Tyres update(Tyres tyre);
+    TyreResponseDTO update(TyreRequestDTO dto, Long id);
 }

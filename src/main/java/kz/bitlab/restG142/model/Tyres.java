@@ -26,4 +26,7 @@ public class Tyres {
 
     @Column(name = "manufacturer")
     private String manufacturer;
+
+    @Column(name = "password")
+    private String password;
 }

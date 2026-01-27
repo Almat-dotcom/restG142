@@ -29,4 +29,8 @@ public class Tyres {
 
     @Column(name = "password")
     private String password;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "season_id")
+    private Season season;
 }

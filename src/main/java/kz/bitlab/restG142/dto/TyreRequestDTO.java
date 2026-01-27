@@ -15,4 +15,6 @@ public class TyreRequestDTO {
     private String manufacturer;
 
     private String password;
+
+    private Long seasonId;
 }

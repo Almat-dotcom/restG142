@@ -8,3 +8,5 @@ spring:
     password: qwerty
   application:
     name: restG142
+server:
+  port: 8083

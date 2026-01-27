@@ -5,12 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TyreResponseShortDTO {
-    public Long id;
+public class SeasonDTO {
+    private Long id;
 
     private String name;
-
-    private String profile;
-
-    private SeasonDTO season;
 }

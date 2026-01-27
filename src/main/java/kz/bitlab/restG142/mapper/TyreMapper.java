@@ -10,9 +10,11 @@ import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring",
+        uses = {MapperHelper.class})
 public interface TyreMapper {
     @Mapping(source = "fullName", target = "name")
+    @Mapping(source = "seasonId", target = "season", qualifiedByName = "toSeason")
     Tyres toEntity(TyreRequestDTO dto);
 
     TyreResponseDTO toDTO(Tyres entity);

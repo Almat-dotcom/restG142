@@ -6,6 +6,7 @@ import kz.bitlab.restG142.dto.TyreResponseShortDTO;
 import kz.bitlab.restG142.model.Tyres;
 import kz.bitlab.restG142.service.TyreService;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,13 +20,9 @@ public class TyreController {
     private final TyreService tyreService;
 
     @GetMapping("/{id}")
+    @SneakyThrows
     public ResponseEntity<TyreResponseShortDTO> get(@PathVariable(name = "id") Long id) {
-        try {
-            return ResponseEntity.status(HttpStatus.OK).body(tyreService.getById(id));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
+        return ResponseEntity.status(HttpStatus.OK).body(tyreService.getById(id));
     }
 
     @GetMapping("/")

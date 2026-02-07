@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table
+@Table(name = "t_tyres")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -26,9 +26,6 @@ public class Tyres {
 
     @Column(name = "manufacturer")
     private String manufacturer;
-
-    @Column(name = "password")
-    private String password;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "season_id")

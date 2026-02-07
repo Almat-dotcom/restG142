@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table
+@Table(name = "t_season")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

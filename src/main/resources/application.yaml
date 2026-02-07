@@ -1,12 +1,15 @@
 spring:
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
   datasource:
     url: jdbc:postgresql://localhost:5432/tyresg142
     username: postgres
     password: qwerty
   application:
     name: restG142
+
 server:
   port: 8083

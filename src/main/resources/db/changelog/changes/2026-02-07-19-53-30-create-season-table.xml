@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet id="create-season-table" author="almat-dotcom">
+        <createTable tableName="t_season">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-tyres-table" author="almat-dotcom">
+        <createTable tableName="t_tyres">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(250)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="profile" type="varchar(250)"/>
+            <column name="price" type="int"/>
+            <column name="manufacturer" type="varchar(250)"/>
+            <column name="season_id" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-foreign-season" author="almat-dotcom">
+        <addForeignKeyConstraint
+                baseTableName="t_tyres"
+                baseColumnNames="season_id"
+                constraintName="fk_season_tyres"
+                referencedTableName="t_season"
+                referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

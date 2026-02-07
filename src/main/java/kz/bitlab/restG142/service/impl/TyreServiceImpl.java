@@ -9,11 +9,13 @@ import kz.bitlab.restG142.repository.TyresRepository;
 import kz.bitlab.restG142.service.TyreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class TyreServiceImpl implements TyreService {
     private final TyresRepository tyresRepository;
     private final TyreMapper tyreMapper;

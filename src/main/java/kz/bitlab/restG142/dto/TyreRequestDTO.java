@@ -4,6 +4,9 @@ import lombok.*;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class TyreRequestDTO {
 
     private String fullName;

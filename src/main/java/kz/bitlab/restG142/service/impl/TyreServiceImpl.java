@@ -20,6 +20,10 @@ public class TyreServiceImpl implements TyreService {
     private final TyresRepository tyresRepository;
     private final TyreMapper tyreMapper;
 
+    public int example() {
+        return 2;
+    }
+
     @Override
     public TyreResponseShortDTO getById(Long id) {
         Tyres tyre = tyresRepository.findById(id).orElseThrow(() -> new RuntimeException("Tyre not found"));
